@@ -25,6 +25,7 @@ then
 else
 	RPROMPT='$my_gray%n@%m%{$reset_color%}%'
 fi
+RPROMPT='$my_gray rev.$(git_rev_count)%{$reset_color%}%'
 
 # git settings
 ZSH_THEME_GIT_PROMPT_PREFIX="$FG[075](branch:"
