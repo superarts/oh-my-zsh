@@ -8,6 +8,18 @@ function git_prompt_info() {
   fi
 }
 
+function git_rev_count() {
+	local ref
+	ref=$(git symbolic-ref HEAD 2>/dev/null)
+	if [ ! -z $ref ]; then
+		local rev
+		rev=$(command git rev-list HEAD | wc -l | tr -d ' ' 2>/dev/null) || return 0
+		echo $rev
+	else
+		echo '0'
+	fi
+}
+
 # Checks if working tree is dirty
 function parse_git_dirty() {
   local STATUS=''
